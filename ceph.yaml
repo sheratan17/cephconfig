@@ -1,0 +1,25 @@
+---
+- name: Persiapan ceph
+  hosts: all
+  become: true
+  tasks:
+    - name: Update system OS
+      yum:
+        name: "*"
+        state: latest
+        update_cache: true
+    - name: Install EPEL
+      yum:
+        name:
+          - epel-release
+        state: latest
+    - name: Update yum setelah install EPEL
+      yum:
+        name: "*"
+        state: latest
+    - name: Instal python3 dan podman
+      yum:
+        name:
+          - python3
+          - podman
+        state: latest
